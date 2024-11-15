@@ -15,7 +15,7 @@
         android:id="@+id/nav_gallery"
         android:name="com.a2valdez.keiebo.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_reuniones" />
 
     <fragment
         android:id="@+id/nav_slideshow"
