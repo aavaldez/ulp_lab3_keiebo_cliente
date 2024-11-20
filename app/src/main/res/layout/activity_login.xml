@@ -18,53 +18,82 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etLoginUsuario"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/etLoginUsuarioLayout"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginTop="40dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:ems="10"
         android:hint="@string/usuario"
         android:text="aavaldez@gmail.com"
-        android:inputType="text"
         android:textColorHint="#8D6E63"
+        android:ems="10"
+        app:startIconDrawable="@drawable/ic_person"
+        app:endIconMode="clear_text"
+        app:helperText="Requerido"
+        app:helperTextTextColor="@color/red"
+        app:counterMaxLength="30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLogin"
-        android:autofillHints="" />
+        android:autofillHints="" >
 
-    <EditText
-        android:id="@+id/etLoginPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLoginUsuario"
+            android:maxLength="30"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/etLoginPasswordLayout"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:ems="10"
         android:hint="@string/password"
-        android:text="asd"
-        android:inputType="textPassword"
+        android:text="aavaldez@gmail.com"
         android:textColorHint="#8D6E63"
+        android:ems="10"
+        app:startIconDrawable="@drawable/ic_time"
+        app:endIconMode="password_toggle"
+        app:helperText="Requerido"
+        app:helperTextTextColor="@color/red"
+        app:counterMaxLength="30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginUsuario"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/etLoginUsuarioLayout"
+        android:autofillHints="" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLoginPassword"
+            android:maxLength="20"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btLogin"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="62dp"
         android:layout_marginTop="30dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:text="@string/ingresar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etLoginPasswordLayout" />
 
     <TextView
         android:id="@+id/tvMensajes"
