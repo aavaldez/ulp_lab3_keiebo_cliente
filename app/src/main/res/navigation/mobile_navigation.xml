@@ -6,20 +6,45 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
+        android:id="@+id/nav_login"
+        android:name="com.a2valdez.keiebo.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_reunion_mapa" />
+
+    <fragment
         android:id="@+id/nav_home"
         android:name="com.a2valdez.keiebo.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_reunion_mapa" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.a2valdez.keiebo.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:id="@+id/nav_perfil"
+        android:name="com.a2valdez.keiebo.ui.reunion.ReunionFragment"
+        android:label="@string/menu_reunion"
         tools:layout="@layout/fragment_reuniones" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.a2valdez.keiebo.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_reunion"
+        android:name="com.a2valdez.keiebo.ui.reunion.ReunionFragment"
+        android:label="@string/menu_reunion"
+        tools:layout="@layout/fragment_reuniones" />
+
+    <fragment
+        android:id="@+id/nav_reunion_mapa"
+        android:name="com.a2valdez.keiebo.ui.reunion.ReunionFragment"
+        android:label="@string/menu_reunion"
+        tools:layout="@layout/fragment_reuniones" />
+
+    <fragment
+        android:id="@+id/nav_reunion_detalle"
+        android:name="com.a2valdez.keiebo.ui.reunion.ReunionFragment"
+        android:label="@string/menu_reunion"
+        tools:layout="@layout/fragment_reuniones" />
+
+    <fragment
+        android:id="@+id/nav_reunion_detalle_mapa"
+        android:name="com.a2valdez.keiebo.ui.reunion.ReunionFragment"
+        android:label="@string/menu_reunion"
+        tools:layout="@layout/fragment_reuniones" />
+
 </navigation>

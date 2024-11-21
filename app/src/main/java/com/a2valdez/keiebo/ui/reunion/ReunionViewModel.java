@@ -1,14 +1,14 @@
-package com.a2valdez.keiebo.ui.gallery;
+package com.a2valdez.keiebo.ui.reunion;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class ReunionViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public ReunionViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is gallery fragment");
     }

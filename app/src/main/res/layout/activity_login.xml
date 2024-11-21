@@ -63,7 +63,7 @@
         android:text="aavaldez@gmail.com"
         android:textColorHint="#8D6E63"
         android:ems="10"
-        app:startIconDrawable="@drawable/ic_time"
+        app:startIconDrawable="@drawable/ic_lock"
         app:endIconMode="password_toggle"
         app:helperText="Requerido"
         app:helperTextTextColor="@color/red"

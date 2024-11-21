@@ -1,4 +1,4 @@
-package com.a2valdez.keiebo.ui.slideshow;
+package com.a2valdez.keiebo.ui.reunion;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.a2valdez.keiebo.databinding.FragmentSlideshowBinding;
+import com.a2valdez.keiebo.databinding.FragmentReunionBinding;
 
-public class SlideshowFragment extends Fragment {
+public class ReunionFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentReunionBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        ReunionViewModel reunionViewModel =
+                new ViewModelProvider(this).get(ReunionViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentReunionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.etReason;
+        reunionViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
