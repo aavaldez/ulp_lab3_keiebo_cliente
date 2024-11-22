@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Contrato;
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inquilino;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Participante;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Participante;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Pago;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
 import com.google.gson.Gson;
@@ -58,18 +58,18 @@ public class ApiClientRetrofit {
         @PUT("Propietarios/Editar")
         Call<Propietario> editarPerfil(@Header("Authorization") String token, @Body Propietario propietario);
 
-        @GET("Inmuebles/Todos")
-        Call<List<Inmueble>> obtenerInmuebles(@Header("Authorization") String token);
+        @GET("Participantes/Todos")
+        Call<List<Participante>> obtenerParticipantes(@Header("Authorization") String token);
 
-        @GET("Inmuebles/Obtener/{id}")
-        Call<Inmueble> obtenerInmueble(@Header("Authorization") String token,  @Path("id") int id);
+        @GET("Participantes/Obtener/{id}")
+        Call<Participante> obtenerParticipante(@Header("Authorization") String token,  @Path("id") int id);
 
-        @PUT("Inmuebles/Cambiar_Estado/")
-        Call<Inmueble> cambiarEstado(@Header("Authorization") String token, @Body Inmueble inmueble);
+        @PUT("Participantes/Cambiar_Estado/")
+        Call<Participante> cambiarEstado(@Header("Authorization") String token, @Body Participante Participante);
 
         @Multipart
-        @POST("Inmuebles/Crear")
-        Call<Inmueble> crearInmueble(@Header("Authorization") String token,
+        @POST("Participantes/Crear")
+        Call<Participante> crearParticipante(@Header("Authorization") String token,
                                      @Part("Direccion") RequestBody direccion,
                                      @Part("Ambientes") RequestBody ambientes,
                                      @Part("Tipo") RequestBody tipo,
@@ -78,14 +78,14 @@ public class ApiClientRetrofit {
                                      @Part MultipartBody.Part imagen
         );
 
-        @GET("Inmuebles/Alquilados")
-        Call<List<Inmueble>> obtenerInmueblesAlquiladas(@Header("Authorization") String token);
+        @GET("Participantes/Alquilados")
+        Call<List<Participante>> obtenerParticipantesAlquiladas(@Header("Authorization") String token);
 
-        @GET("Inquilinos/Obtener/{id}")
-        Call<Inquilino> obtenerInquilinoPorInmueble(@Header("Authorization") String token, @Path("id") int id);
+        @GET("Participantes/Obtener/{id}")
+        Call<Participante> obtenerParticipantePorParticipante(@Header("Authorization") String token, @Path("id") int id);
 
         @GET("Contratos/Obtener/{id}")
-        Call<Contrato> obtenerContratoPorInmueble(@Header("Authorization") String token, @Path("id") int id);
+        Call<Contrato> obtenerContratoPorParticipante(@Header("Authorization") String token, @Path("id") int id);
 
         @GET("Pagos/Obtener/{id}")
         Call<List<Pago>> obtenerPagosPorContrato(@Header("Authorization") String token, @Path("id") int id);

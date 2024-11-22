@@ -6,13 +6,13 @@ public class Pago implements Serializable {
 
     private int id;
     private int numero;
-    private Contrato contrato;
+    private Reunion contrato;
     private double importe;
     private String fecha;
 
     public Pago() {}
 
-    public Pago(int id, int numero, Contrato contrato, double importe, String fechaDePago) {
+    public Pago(int id, int numero, Reunion contrato, double importe, String fechaDePago) {
         this.id = id;
         this.numero = numero;
         this.contrato = contrato;
@@ -36,11 +36,11 @@ public class Pago implements Serializable {
         this.numero = numero;
     }
 
-    public Contrato getContrato() {
+    public Reunion getContrato() {
         return contrato;
     }
 
-    public void setContrato(Contrato contrato) {
+    public void setContrato(Reunion contrato) {
         this.contrato = contrato;
     }
 

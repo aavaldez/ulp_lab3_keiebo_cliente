@@ -1,4 +1,4 @@
-package com.a2valdez.keiebo.ui.reunion;
+package com.a2valdez.keiebo.ui.reuniones;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.a2valdez.keiebo.databinding.FragmentReunionBinding;
+import com.a2valdez.keiebo.databinding.FragmentReunionesBinding;
 
-public class ReunionFragment extends Fragment {
+public class ReunionesFragment extends Fragment {
 
-    private FragmentReunionBinding binding;
+    private FragmentReunionesBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         ReunionViewModel reunionViewModel =
                 new ViewModelProvider(this).get(ReunionViewModel.class);
 
-        binding = FragmentReunionBinding.inflate(inflater, container, false);
+        binding = FragmentReunionesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.etReason;

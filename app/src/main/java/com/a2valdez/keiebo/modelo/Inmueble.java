@@ -3,7 +3,7 @@ package com.a2valdez.keiebo.modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Inmueble implements Serializable {
+public class Participante implements Serializable {
 
     private int id;
     private String direccion;
@@ -16,7 +16,7 @@ public class Inmueble implements Serializable {
     private boolean estado=true;
     private String imagen;
 
-    public Inmueble(int id, String direccion, String uso, String tipo, int ambientes, double precio, Propietario propietario, boolean estado, String imagen) {
+    public Participante(int id, String direccion, String uso, String tipo, int ambientes, double precio, Propietario propietario, boolean estado, String imagen) {
         this.id = id;
         this.direccion = direccion;
         this.uso = uso;
@@ -27,7 +27,7 @@ public class Inmueble implements Serializable {
         this.estado = estado;
         this.imagen = imagen;
     }
-    public Inmueble() {
+    public Participante() {
 
     }
     public int getId() {
@@ -106,8 +106,8 @@ public class Inmueble implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Inmueble inmueble = (Inmueble) o;
-        return id == inmueble.id;
+        Participante Participante = (Participante) o;
+        return id == Participante.id;
     }
 
     @Override

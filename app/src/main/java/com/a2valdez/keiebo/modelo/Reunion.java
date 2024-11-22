@@ -3,23 +3,23 @@ package com.a2valdez.keiebo.modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Contrato implements Serializable {
+public class Reunion implements Serializable {
 
     private int id;
     private String desde;
     private String hasta;
     private double valor;
-    private Inquilino inquilino;
-    private Inmueble inmueble;
+    private Participante Participante;
+    private Participante Participante;
 
-    public Contrato() {}
-    public Contrato(int id, String fechaInicio, String fechaFin, double valor, Inquilino inquilino, Inmueble inmueble) {
+    public Reunion() {}
+    public Reunion(int id, String fechaInicio, String fechaFin, double valor, Participante Participante, Participante Participante) {
         this.id = id;
         this.desde = fechaInicio;
         this.hasta = fechaFin;
         this.valor = valor;
-        this.inquilino = inquilino;
-        this.inmueble = inmueble;
+        this.Participante = Participante;
+        this.Participante = Participante;
     }
 
     public int getId() {
@@ -55,27 +55,27 @@ public class Contrato implements Serializable {
     }
 
 
-    public Inquilino getInquilino() {
-        return inquilino;
+    public Participante getParticipante() {
+        return Participante;
     }
 
-    public void setInquilino(Inquilino inquilino) {
-        this.inquilino = inquilino;
+    public void setParticipante(Participante Participante) {
+        this.Participante = Participante;
     }
 
-    public Inmueble getInmueble() {
-        return inmueble;
+    public Participante getParticipante() {
+        return Participante;
     }
 
-    public void setInmueble(Inmueble inmueble) {
-        this.inmueble = inmueble;
+    public void setParticipante(Participante Participante) {
+        this.Participante = Participante;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Contrato contrato = (Contrato) o;
+        Reunion contrato = (Reunion) o;
         return id == contrato.id;
     }
 

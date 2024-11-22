@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class ApiClient {
     private ArrayList<Propietario> propietarios=new ArrayList<>();
-    private ArrayList<Inquilino> inquilinos=new ArrayList<>();
-    private ArrayList<Inmueble> inmuebles=new ArrayList<>();
-    private ArrayList<Contrato> contratos=new ArrayList<>();
+    private ArrayList<Participante> Participantes=new ArrayList<>();
+    private ArrayList<Participante> Participantes=new ArrayList<>();
+    private ArrayList<Reunion> contratos=new ArrayList<>();
     private ArrayList<Pago> pagos=new ArrayList<>();
     private static Propietario usuarioActual=null;
     private static ApiClient api=null;
@@ -45,52 +45,52 @@ public class ApiClient {
     }
 
     //Retorna todas las propiedades del usuario propietario logueado
-    public ArrayList<Inmueble> obtnerPropiedades(){
-        ArrayList<Inmueble> temp=new ArrayList<>();
-        for(Inmueble inmueble:inmuebles){
-            if(inmueble.getPropietario().equals(usuarioActual)){
-                temp.add(inmueble);
+    public ArrayList<Participante> obtnerPropiedades(){
+        ArrayList<Participante> temp=new ArrayList<>();
+        for(Participante Participante:Participantes){
+            if(Participante.getPropietario().equals(usuarioActual)){
+                temp.add(Participante);
             }
         }
         return temp;
     }
 
-    //Lista de inmuebles alquilados actualmente del propietario logueado.
-    public ArrayList<Inmueble> obtenerPropiedadesAlquiladas(){
-        ArrayList<Inmueble> temp=new ArrayList<>();
-        for(Contrato contrato:contratos){
-            if(contrato.getInmueble().getPropietario().equals(usuarioActual)){
-                temp.add(contrato.getInmueble());
+    //Lista de Participantes alquilados actualmente del propietario logueado.
+    public ArrayList<Participante> obtenerPropiedadesAlquiladas(){
+        ArrayList<Participante> temp=new ArrayList<>();
+        for(Reunion contrato:contratos){
+            if(contrato.getParticipante().getPropietario().equals(usuarioActual)){
+                temp.add(contrato.getParticipante());
             }
         }
         return temp;
     }
 
-    //Dado un inmueble retorna el contrato activo de dicho inmueble
-    public Contrato obtenerContratoVigente(Inmueble inmueble){
+    //Dado un Participante retorna el contrato activo de dicho Participante
+    public Reunion obtenerContratoVigente(Participante Participante){
 
-        for(Contrato contrato:contratos){
-            if(contrato.getInmueble().equals(inmueble)){
+        for(Reunion contrato:contratos){
+            if(contrato.getParticipante().equals(Participante)){
                 return contrato;
             }
         }
         return null;
     }
 
-    //Dado un inmueble, retorna el inquilino del ultimo contrato activo de ese inmueble.
-    public Inquilino obtenerInquilino(Inmueble inmueble){
-        for(Contrato contrato:contratos){
-            if(contrato.getInmueble().equals(inmueble)){
-                return contrato.getInquilino();
+    //Dado un Participante, retorna el Participante del ultimo contrato activo de ese Participante.
+    public Participante obtenerParticipante(Participante Participante){
+        for(Reunion contrato:contratos){
+            if(contrato.getParticipante().equals(Participante)){
+                return contrato.getParticipante();
             }
         }
         return null;
     }
 
     //Dado un Contrato, retorna los pagos de dicho contrato
-    public ArrayList<Pago> obtenerPagos(Contrato contratoVer){
+    public ArrayList<Pago> obtenerPagos(Reunion contratoVer){
         ArrayList<Pago> temp=new ArrayList<>();
-        for(Contrato contrato:contratos){
+        for(Reunion contrato:contratos){
             if(contrato.equals(contratoVer)){
                 for(Pago pago:pagos){
                     if(pago.getContrato().equals(contrato)){
@@ -111,11 +111,11 @@ public class ApiClient {
         }
     }
 
-    //ActualizarInmueble
-    public void actualizarInmueble(Inmueble inmueble){
-        int posicion=inmuebles.indexOf(inmueble);
+    //ActualizarParticipante
+    public void actualizarParticipante(Participante Participante){
+        int posicion=Participantes.indexOf(Participante);
         if(posicion!=-1){
-            inmuebles.set(posicion,inmueble);
+            Participantes.set(posicion,Participante);
         }
     }
 
@@ -126,25 +126,25 @@ public class ApiClient {
         propietarios.add(juan);
         propietarios.add(sonia);
 
-        //Inquilinos
-        Inquilino mario=new Inquilino(100,25340691L,"Mario","Luna","Aiello sup.","luna@mail.com","2664253411","Lucero Roberto","2664851422");
-        inquilinos.add(mario);
+        //Participantes
+        Participante mario=new Participante(100,25340691L,"Mario","Luna","Aiello sup.","luna@mail.com","2664253411","Lucero Roberto","2664851422");
+        Participantes.add(mario);
 
-        //Inmuebles
-        Inmueble salon=new Inmueble(501,"Colon 340","comercial","salon",2,20000,juan,true,"http://www.secsanluis.com.ar/servicios/salon1.jpg");
-        Inmueble casa=new Inmueble(502,"Mitre 800","particular","casa",2,15000,juan,true,"http://www.secsanluis.com.ar/servicios/casa1.jpg");
-        Inmueble otraCasa=new Inmueble(503,"Salta 325","particular","casa",3,17000,sonia,true,"http://www.secsanluis.com.ar/servicios/casa2.jpg");
-        Inmueble dpto=new Inmueble(504,"Lavalle 450","particular","dpto",2,25000,sonia,true,"http://www.secsanluis.com.ar/servicios/departamento1.jpg");
-        Inmueble casita=new Inmueble(505,"Belgrano 218","particular","casa",5,90000,sonia,true,"http://www.secsanluis.com.ar/servicios/casa3.jpg");
+        //Participantes
+        Participante salon=new Participante(501,"Colon 340","comercial","salon",2,20000,juan,true,"http://www.secsanluis.com.ar/servicios/salon1.jpg");
+        Participante casa=new Participante(502,"Mitre 800","particular","casa",2,15000,juan,true,"http://www.secsanluis.com.ar/servicios/casa1.jpg");
+        Participante otraCasa=new Participante(503,"Salta 325","particular","casa",3,17000,sonia,true,"http://www.secsanluis.com.ar/servicios/casa2.jpg");
+        Participante dpto=new Participante(504,"Lavalle 450","particular","dpto",2,25000,sonia,true,"http://www.secsanluis.com.ar/servicios/departamento1.jpg");
+        Participante casita=new Participante(505,"Belgrano 218","particular","casa",5,90000,sonia,true,"http://www.secsanluis.com.ar/servicios/casa3.jpg");
 
-        inmuebles.add(salon);
-        inmuebles.add(casa);
-        inmuebles.add(otraCasa);
-        inmuebles.add(dpto);
-        inmuebles.add(casita);
+        Participantes.add(salon);
+        Participantes.add(casa);
+        Participantes.add(otraCasa);
+        Participantes.add(dpto);
+        Participantes.add(casita);
 
         //Contratos
-        Contrato uno=new Contrato(701, "05/08/2020","05/08/2023",17000,mario,otraCasa);
+        Reunion uno=new Reunion(701, "05/08/2020","05/08/2023",17000,mario,otraCasa);
         contratos.add(uno);
         //Pagos
         pagos.add(new Pago(900,1,uno,17000,"10/08/2020"));

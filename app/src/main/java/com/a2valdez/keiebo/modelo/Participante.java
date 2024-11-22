@@ -2,7 +2,7 @@ package com.a2valdez.keiebo.modelo;
 
 import java.io.Serializable;
 
-public class Inquilino implements Serializable {
+public class Participante implements Serializable {
 
     private int id;
     private Long dni;
@@ -14,9 +14,9 @@ public class Inquilino implements Serializable {
     private String nombreGarante;
     private String telefonoGarante;
 
-    public Inquilino() {}
+    public Participante() {}
 
-    public Inquilino(int id, Long dni, String nombre, String apellido, String lugarDeTrabajo, String email, String telefono, String nombreGarante, String telefonoGarante) {
+    public Participante(int id, Long dni, String nombre, String apellido, String lugarDeTrabajo, String email, String telefono, String nombreGarante, String telefonoGarante) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
