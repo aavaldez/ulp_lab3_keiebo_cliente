@@ -1,31 +1,28 @@
 package com.a2valdez.keiebo.modelo;
 
-import java.io.Serializable;
+import java.util.Objects;
 
-public class Participante implements Serializable {
+public class Participante {
 
     private int id;
     private Long dni;
     private String nombre;
     private String apellido;
-    private String lugarDeTrabajo;
     private String email;
+    private String password;
     private String telefono;
-    private String nombreGarante;
-    private String telefonoGarante;
+    private String avatar;
 
-    public Participante() {}
-
-    public Participante(int id, Long dni, String nombre, String apellido, String lugarDeTrabajo, String email, String telefono, String nombreGarante, String telefonoGarante) {
+    public Participante(){}
+    public Participante(int id, Long dni, String nombre, String apellido, String email, String password, String telefono, String avatar) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.lugarDeTrabajo = lugarDeTrabajo;
         this.email = email;
+        this.password = password;
         this.telefono = telefono;
-        this.nombreGarante = nombreGarante;
-        this.telefonoGarante = telefonoGarante;
+        this.avatar = avatar;
     }
 
     public int getId() {
@@ -40,7 +37,7 @@ public class Participante implements Serializable {
         return dni;
     }
 
-    public void setDNI(Long dni) {
+    public void setDni(Long dni) {
         this.dni = dni;
     }
 
@@ -60,20 +57,20 @@ public class Participante implements Serializable {
         this.apellido = apellido;
     }
 
-    public String getLugarDeTrabajo() {
-        return lugarDeTrabajo;
-    }
-
-    public void setLugarDeTrabajo(String lugarDeTrabajo) {
-        this.lugarDeTrabajo = lugarDeTrabajo;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String contraseña) {
+        this.password = contraseña;
     }
 
     public String getTelefono() {
@@ -84,19 +81,24 @@ public class Participante implements Serializable {
         this.telefono = telefono;
     }
 
-    public String getNombreGarante() {
-        return nombreGarante;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setNombreGarante(String nombreGarante) {
-        this.nombreGarante = nombreGarante;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public String getTelefonoGarante() {
-        return telefonoGarante;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Participante that = (Participante) o;
+        return id == that.id;
     }
 
-    public void setTelefonoGarante(String telefonoGarante) {
-        this.telefonoGarante = telefonoGarante;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

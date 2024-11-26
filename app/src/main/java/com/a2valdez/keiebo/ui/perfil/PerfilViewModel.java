@@ -11,9 +11,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.LoginActivity;
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClientRetrofit;
+import com.a2valdez.keiebo.LoginActivity;
+import com.a2valdez.keiebo.modelo.Participante;
+import com.a2valdez.keiebo.request.ApiClientRetrofit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 public class PerfilViewModel extends AndroidViewModel {
     private Context context;
-    private MutableLiveData<Propietario> mPropietario;
+    private MutableLiveData<Participante> mParticipante;
     private MutableLiveData<Boolean> esEditable;
 
     public PerfilViewModel(@NonNull Application application) {
@@ -29,11 +29,11 @@ public class PerfilViewModel extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public LiveData<Propietario> getMPropietario() {
-        if(mPropietario == null){
-            mPropietario = new MutableLiveData<>();
+    public LiveData<Participante> getMPropietario() {
+        if(mParticipante == null){
+            mParticipante = new MutableLiveData<>();
         }
-        return mPropietario;
+        return mParticipante;
     }
 
     public LiveData<Boolean> getMEsEditable() {
@@ -46,20 +46,20 @@ public class PerfilViewModel extends AndroidViewModel {
 
     public void LeerUsuario(){
         String token = ApiClientRetrofit.leerToken(context);
-        ApiClientRetrofit.ApiInmobiliaria apiInmobiliaria = ApiClientRetrofit.getApiInmobiliaria();
-        Call<Propietario> p = apiInmobiliaria.obtenerPerfil(token);
-        p.enqueue(new Callback<Propietario>() {
+        ApiClientRetrofit.ApiKeiebo apiKeiebo = ApiClientRetrofit.getApiKeiebo();
+        Call<Participante> p = apiKeiebo.obtenerPerfil(token);
+        p.enqueue(new Callback<Participante>() {
             @Override
-            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+            public void onResponse(Call<Participante> call, Response<Participante> response) {
                 if(response.isSuccessful()){
                     //Log.d("salida", response.body().getNombre());
-                    mPropietario.postValue(response.body());
+                    mParticipante.postValue(response.body());
                 } else{
                     Log.d("salida", response.message());
                 }
             }
             @Override
-            public void onFailure(Call<Propietario> call, Throwable t) {
+            public void onFailure(Call<Participante> call, Throwable t) {
                 Log.d("salida", t.getMessage());
             }
         });
@@ -69,7 +69,7 @@ public class PerfilViewModel extends AndroidViewModel {
         esEditable.setValue(!esEditable.getValue());
     }
 
-    public void GuardarPropietario(Propietario p){
+    public void GuardarParticipante(Participante p){
         /*
         if (dni.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || telefono.isEmpty()) {
             Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
@@ -86,15 +86,15 @@ public class PerfilViewModel extends AndroidViewModel {
             return;
         }
 
-        ApiClientRetrofit.ApiInmobiliaria apiInmobiliaria = ApiClientRetrofit.getApiInmobiliaria();
-        Call<Propietario> call = apiInmobiliaria.editarPerfil(token, p);
-        call.enqueue(new Callback<Propietario>() {
+        ApiClientRetrofit.ApiKeiebo apiKeiebo = ApiClientRetrofit.getApiKeiebo();
+        Call<Participante> call = apiKeiebo.editarPerfil(token, p);
+        call.enqueue(new Callback<Participante>() {
             @Override
-            public void onResponse(@NonNull Call<Propietario> call, @NonNull Response<Propietario> response) {
+            public void onResponse(@NonNull Call<Participante> call, @NonNull Response<Participante> response) {
                 Log.d("salida", response.raw().toString());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        mPropietario.setValue(p);
+                        mParticipante.setValue(p);
                         Toast.makeText(context, "Editado correctamente", Toast.LENGTH_SHORT).show();
                         CambiarEstadoEdicion();
                     }
@@ -102,7 +102,7 @@ public class PerfilViewModel extends AndroidViewModel {
             }
 
             @Override
-            public void onFailure(@NonNull Call<Propietario> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Participante> call, @NonNull Throwable t) {
                 Toast.makeText(context, "Error al obtener usuario", Toast.LENGTH_SHORT).show();
             }
         });

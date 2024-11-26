@@ -33,8 +33,8 @@ public class LoginActivityViewModel extends AndroidViewModel {
     }
 
     public void Login(String email, String password){
-        ApiClientRetrofit.ApiInmobiliaria apiInmobiliaria = ApiClientRetrofit.getApiInmobiliaria();
-        Call<String> token = apiInmobiliaria.login(email, password);
+        ApiClientRetrofit.ApiKeiebo apiKeiebo = ApiClientRetrofit.getApiKeiebo();
+        Call<String> token = apiKeiebo.login(email, password);
         token.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

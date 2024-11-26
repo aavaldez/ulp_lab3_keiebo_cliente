@@ -2,20 +2,20 @@ package com.a2valdez.keiebo.modelo;
 
 import java.io.Serializable;
 
-public class Pago implements Serializable {
+public class Tarea implements Serializable {
 
     private int id;
     private int numero;
-    private Reunion contrato;
+    private Reunion reunion;
     private double importe;
     private String fecha;
 
-    public Pago() {}
+    public Tarea() {}
 
-    public Pago(int id, int numero, Reunion contrato, double importe, String fechaDePago) {
+    public Tarea(int id, int numero, Reunion reunion, double importe, String fechaDePago) {
         this.id = id;
         this.numero = numero;
-        this.contrato = contrato;
+        this.reunion = reunion;
         this.importe = importe;
         this.fecha = fechaDePago;
     }
@@ -37,11 +37,11 @@ public class Pago implements Serializable {
     }
 
     public Reunion getContrato() {
-        return contrato;
+        return reunion;
     }
 
-    public void setContrato(Reunion contrato) {
-        this.contrato = contrato;
+    public void setContrato(Reunion reunion) {
+        this.reunion = reunion;
     }
 
     public double getImporte() {

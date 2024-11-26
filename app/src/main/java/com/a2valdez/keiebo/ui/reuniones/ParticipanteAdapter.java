@@ -35,45 +35,25 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = li.inflate(R.layout.item_Participante, parent, false);
+        View view = li.inflate(R.layout.item_participante, parent, false);
         return new ViewHolder(view);
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.direccion.setText(Participantes.get(position).getDireccion());
-        holder.precio.setText(String.valueOf(Participantes.get(position).getPrecio()));
+        holder.nombre.setText(Participantes.get(position).getNombre());
         holder.id.setText(String.valueOf(Participantes.get(position).getId()));
-        String imagen = Participantes.get(position).getImagen().replace("\\","/");
-        String url = ApiClientRetrofit.URLBASE+imagen;
-        Glide.with(contexto)
-                .load(url)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.imagen);
     }
     @Override
     public int getItemCount() {
         return Participantes.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView direccion;
-        private TextView precio;
+        private TextView nombre;
         private EditText id;
-        private ImageView imagen;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            direccion = itemView.findViewById(R.id.tvItemParticipanteDireccion);
-            precio = itemView.findViewById(R.id.tvItemParticipantePrecio);
+            nombre = itemView.findViewById(R.id.tvItemParticipanteNombre);
             id = itemView.findViewById(R.id.etItemParticipanteId);
-            imagen = itemView.findViewById(R.id.ivItemParticipante);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceType")
-                @Override
-                public void onClick(View view) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("id", id.getText().toString());
-                    Navigation.findNavController(view).navigate(R.id.ParticipanteFragment, bundle);
-                }
-            });
         }
     }
 }

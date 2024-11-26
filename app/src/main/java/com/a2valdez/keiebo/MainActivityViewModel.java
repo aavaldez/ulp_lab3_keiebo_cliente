@@ -9,7 +9,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.a2valdez.keiebo.modelo.Propietario;
+import com.a2valdez.keiebo.modelo.Participante;
 import com.a2valdez.keiebo.request.ApiClientRetrofit;
 
 import retrofit2.Call;
@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class MainActivityViewModel extends AndroidViewModel {
     private Context context;
-    private MutableLiveData<Propietario> mPropietario;
+    private MutableLiveData<Participante> mParticipante;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
@@ -26,28 +26,28 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<Propietario> getMPropietario() {
-        if(mPropietario == null){
-            mPropietario = new MutableLiveData<>();
+    public LiveData<Participante> getMPropietario() {
+        if(mParticipante == null){
+            mParticipante = new MutableLiveData<>();
         }
-        return mPropietario;
+        return mParticipante;
     }
 
     public void LeerUsuario(){
         String token = ApiClientRetrofit.leerToken(context);
-        ApiClientRetrofit.ApiInmobiliaria apiInmobiliaria = ApiClientRetrofit.getApiInmobiliaria();
-        Call<Propietario> p = apiInmobiliaria.obtenerPerfil(token);
-        p.enqueue(new Callback<Propietario>() {
+        ApiClientRetrofit.ApiKeiebo apiKeiebo = ApiClientRetrofit.getApiKeiebo();
+        Call<Participante> p = apiKeiebo.obtenerPerfil(token);
+        p.enqueue(new Callback<Participante>() {
             @Override
-            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+            public void onResponse(Call<Participante> call, Response<Participante> response) {
                 if(response.isSuccessful()){
-                    mPropietario.postValue(response.body());
+                    mParticipante.postValue(response.body());
                 } else{
                     Log.d("salida", response.message());
                 }
             }
             @Override
-            public void onFailure(Call<Propietario> call, Throwable t) {
+            public void onFailure(Call<Participante> call, Throwable t) {
                 Log.d("salida", t.getMessage());
             }
         });

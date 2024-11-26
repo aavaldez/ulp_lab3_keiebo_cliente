@@ -16,8 +16,7 @@
             android:layout_height="wrap_content"
             android:hint="¿Dónde?"
             android:drawableEnd="@drawable/ic_location"
-            android:padding="12dp"
-            android:background="@drawable/rounded_edittext" />
+            android:padding="12dp" />
 
         <EditText
             android:id="@+id/et_date"
@@ -26,7 +25,6 @@
             android:hint="¿Cuándo?"
             android:drawableEnd="@drawable/ic_time"
             android:padding="12dp"
-            android:background="@drawable/rounded_edittext"
             android:layout_marginTop="16dp" />
 
         <EditText
@@ -35,7 +33,6 @@
             android:layout_height="wrap_content"
             android:hint="¿Por qué?"
             android:padding="12dp"
-            android:background="@drawable/rounded_edittext"
             android:layout_marginTop="16dp" />
 
         <EditText
@@ -44,7 +41,6 @@
             android:layout_height="wrap_content"
             android:hint="Enviá un mensaje a tus invitados!!"
             android:padding="12dp"
-            android:background="@drawable/rounded_edittext"
             android:layout_marginTop="16dp"
             android:gravity="start|top"
             android:inputType="textMultiLine" />
@@ -78,7 +74,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_invitees"
+            android:id="@+id/rv_participantes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp" />

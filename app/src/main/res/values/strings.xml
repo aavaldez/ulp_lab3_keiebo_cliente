@@ -13,11 +13,8 @@
     <string name="password">Password</string>
     <string name="ingresar">Ingresar</string>
 
-    <string name="menu_home">Ubicación</string>
+    <string name="menu_home">Home</string>
     <string name="menu_perfil">Perfil</string>
-    <string name="menu_Participantes">Participantes</string>
-    <string name="menu_Participantes">Participantes</string>
-    <string name="menu_contratos">Contratos</string>
+    <string name="menu_reuniones">Reuniones</string>
     <string name="menu_salir">Salir</string>
-    <string name="codigo">Código</string>
 </resources>

@@ -3,11 +3,10 @@ package com.a2valdez.keiebo.request;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Contrato;
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Participante;
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Participante;
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Pago;
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
+import com.a2valdez.keiebo.modelo.Reunion;
+import com.a2valdez.keiebo.modelo.Participante;
+import com.a2valdez.keiebo.modelo.Tarea;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -33,9 +32,9 @@ public class ApiClientRetrofit {
 
     public static final String URLBASE = "http://192.168.100.2:5000/";
     //public static final String URLBASE = "http://192.168.1.191:5000/";
-    private static ApiInmobiliaria apiInmobilaria;
+    private static ApiKeiebo apiKeiebo;
 
-    public static ApiInmobiliaria getApiInmobiliaria(){
+    public static ApiKeiebo getApiKeiebo(){
         Gson gson = new GsonBuilder().setLenient().create();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -43,33 +42,27 @@ public class ApiClientRetrofit {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        apiInmobilaria = retrofit.create(ApiInmobiliaria.class);
-        return apiInmobilaria;
+        apiKeiebo = retrofit.create(ApiKeiebo.class);
+        return apiKeiebo;
     }
 
-    public interface ApiInmobiliaria{
+    public interface ApiKeiebo{
         @FormUrlEncoded
-        @POST("Propietarios/Login")
+        @POST("Participantes/Login")
         Call<String> login(@Field("Email") String usuario, @Field("Password") String password);
 
-        @GET("Propietarios/Perfil")
-        Call<Propietario> obtenerPerfil(@Header("Authorization") String token);
+        @GET("Participantes/Perfil")
+        Call<Participante> obtenerPerfil(@Header("Authorization") String token);
 
-        @PUT("Propietarios/Editar")
-        Call<Propietario> editarPerfil(@Header("Authorization") String token, @Body Propietario propietario);
+        @PUT("Participantes/Editar")
+        Call<Participante> editarPerfil(@Header("Authorization") String token, @Body Participante participante);
 
         @GET("Participantes/Todos")
-        Call<List<Participante>> obtenerParticipantes(@Header("Authorization") String token);
-
-        @GET("Participantes/Obtener/{id}")
-        Call<Participante> obtenerParticipante(@Header("Authorization") String token,  @Path("id") int id);
-
-        @PUT("Participantes/Cambiar_Estado/")
-        Call<Participante> cambiarEstado(@Header("Authorization") String token, @Body Participante Participante);
+        Call<List<Participante>> obtenerParticipantes(@Header("Authorization") String token, @Path("id") int id);
 
         @Multipart
         @POST("Participantes/Crear")
-        Call<Participante> crearParticipante(@Header("Authorization") String token,
+        Call<Participante> crearReunion(@Header("Authorization") String token,
                                      @Part("Direccion") RequestBody direccion,
                                      @Part("Ambientes") RequestBody ambientes,
                                      @Part("Tipo") RequestBody tipo,
@@ -77,18 +70,12 @@ public class ApiClientRetrofit {
                                      @Part("Precio") RequestBody precio,
                                      @Part MultipartBody.Part imagen
         );
-
-        @GET("Participantes/Alquilados")
-        Call<List<Participante>> obtenerParticipantesAlquiladas(@Header("Authorization") String token);
+        //Nuevo
+        @GET("Reuniones/Obtener/{id}")
+        Call<List<Reunion>> obtenerReuniones(@Header("Authorization") String token);
 
         @GET("Participantes/Obtener/{id}")
-        Call<Participante> obtenerParticipantePorParticipante(@Header("Authorization") String token, @Path("id") int id);
-
-        @GET("Contratos/Obtener/{id}")
-        Call<Contrato> obtenerContratoPorParticipante(@Header("Authorization") String token, @Path("id") int id);
-
-        @GET("Pagos/Obtener/{id}")
-        Call<List<Pago>> obtenerPagosPorContrato(@Header("Authorization") String token, @Path("id") int id);
+        Call<Participante> obtenerParticipante(@Header("Authorization") String token,  @Path("id") int id);
     }
 
     public static void guardarToken(Context context, String token){

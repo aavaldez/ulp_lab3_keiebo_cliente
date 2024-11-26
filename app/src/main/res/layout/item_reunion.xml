@@ -16,7 +16,7 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/tv_meeting_title"
+            android:id="@+id/tvItemReunionTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Asado en lo de Juan"
@@ -25,7 +25,7 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/tv_meeting_date_time"
+            android:id="@+id/tvItemReunionFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sábado 28 de Octubre 21:00"
@@ -33,7 +33,7 @@
             android:textColor="#666666" />
 
         <TextView
-            android:id="@+id/tv_meeting_location"
+            android:id="@+id/tvItemReunionDireccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Junin 765 Portón negro con rejas"
@@ -50,7 +50,7 @@
 
         <!-- Icono de ver reunión -->
         <ImageButton
-            android:id="@+id/btn_view_meeting"
+            android:id="@+id/btnItemReunionVer"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_eye"
@@ -61,7 +61,7 @@
 
         <!-- Estado de la reunión (confirmada/rechazada) -->
         <ImageView
-            android:id="@+id/iv_meeting_status"
+            android:id="@+id/ivItemReunionStatus"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_check"

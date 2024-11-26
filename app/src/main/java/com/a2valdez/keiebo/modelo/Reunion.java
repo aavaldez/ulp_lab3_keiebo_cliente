@@ -10,15 +10,13 @@ public class Reunion implements Serializable {
     private String hasta;
     private double valor;
     private Participante Participante;
-    private Participante Participante;
 
     public Reunion() {}
-    public Reunion(int id, String fechaInicio, String fechaFin, double valor, Participante Participante, Participante Participante) {
+    public Reunion(int id, String fechaInicio, String fechaFin, double valor, Participante Participante) {
         this.id = id;
         this.desde = fechaInicio;
         this.hasta = fechaFin;
         this.valor = valor;
-        this.Participante = Participante;
         this.Participante = Participante;
     }
 
@@ -63,20 +61,12 @@ public class Reunion implements Serializable {
         this.Participante = Participante;
     }
 
-    public Participante getParticipante() {
-        return Participante;
-    }
-
-    public void setParticipante(Participante Participante) {
-        this.Participante = Participante;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Reunion contrato = (Reunion) o;
-        return id == contrato.id;
+        Reunion reunion = (Reunion) o;
+        return id == reunion.id;
     }
 
     @Override
